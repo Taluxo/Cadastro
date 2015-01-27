@@ -7,15 +7,20 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
 public class ListaProvasFragment extends Fragment {
 
+    private ListView listViewProvas;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layoutProvas = inflater.inflate(R.layout.fragment_lista_provas,container,false);
+
+        this.listViewProvas = (ListView) layoutProvas.findViewById(R.id.lista_provas);
+
         return layoutProvas;
     }
 
