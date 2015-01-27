@@ -4,22 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by aluno2 on 26/01/15.
- */
 public class Prova implements Serializable {
 
     private String data;
     private String materia;
     private String descricao;
-    private List<String> topicos = new ArrayList<String>;
+    private List<String> topicos = new ArrayList<String>();
 
-
-public Prova(String data, String materia) {
-
-    this.data = data;
-    this.materia = materia;
-}
 
     public String getData() {
         return data;
@@ -37,6 +28,14 @@ public Prova(String data, String materia) {
         this.materia = materia;
     }
 
+    public List<String> getTopicos() {
+        return topicos;
+    }
+
+    public void setTopicos(List<String> topicos) {
+        this.topicos = topicos;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -45,12 +44,8 @@ public Prova(String data, String materia) {
         this.descricao = descricao;
     }
 
-    public List<String> getTopicos() {
-        return topicos;
-    }
-
-    public void setTopicos(List<String> topicos) {
-        this.topicos = topicos;
+    @Override
+    public String toString() {
+        return materia+" - "+data;
     }
 }
-

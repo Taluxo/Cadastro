@@ -1,11 +1,15 @@
 package br.com.caelum.cadastro;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -23,10 +27,11 @@ public class ListaAlunosActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
-        String[] alunos = {"Anderson","Filipe","Guilherme"};
+        setupActionBar();
+        String[] alunos = {"Anderson22", "Filipe", "Guilherme"};
 
         this.listaAlunos = (ListView) findViewById(R.id.lista_alunos);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, alunos);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alunos);
 
         listaAlunos.setAdapter(adapter);
 
@@ -34,7 +39,7 @@ public class ListaAlunosActivity extends ActionBarActivity {
         listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ListaAlunosActivity.this,"Posição selecionada: "+position,Toast.LENGTH_LONG).show();
+                Toast.makeText(ListaAlunosActivity.this, "Posição selecionada: " + position, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -45,7 +50,7 @@ public class ListaAlunosActivity extends ActionBarActivity {
 
                 String aluno = (String) parent.getItemAtPosition(position);
 
-                Toast.makeText(ListaAlunosActivity.this,"Aluno: "+aluno,Toast.LENGTH_LONG).show();
+                Toast.makeText(ListaAlunosActivity.this, "Aluno: " + aluno, Toast.LENGTH_LONG).show();
 
                 return false;
             }
@@ -72,7 +77,7 @@ public class ListaAlunosActivity extends ActionBarActivity {
             return true;
         }
         if (id == R.id.menu_novo) {
-            Intent intent = new Intent(this,FormularioActivity.class);
+            Intent intent = new Intent(this, FormularioActivity.class);
             startActivity(intent);
 
             return false;
@@ -80,10 +85,28 @@ public class ListaAlunosActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    AlunoDAO dao = new AlunoDAO(this);
-    alunos = dao.getLista();
-    dao.close();
+//    AlunoDAO dao = new AlunoDAO(this);
+//    alunos = dao.getLista();
+//    dao.close();
+//
+//    ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
 
-    ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
 
+    private void setupActionBar() {
+        ActionBar actionBar = getActionBar();
+        //actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+
+        ViewGroup v = (ViewGroup) LayoutInflater.from(this)
+                .inflate(R.layout.abc_list_menu_item_icon, null);
+
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+                ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        actionBar.setCustomView(v,
+                new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        Gravity.CENTER_VERTICAL | Gravity.RIGHT));
+
+    }
 }

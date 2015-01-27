@@ -5,17 +5,14 @@
 
     <item
         android:id="@+id/menu_novo"
-        android:icon="@drawable/ic_novo"
-        android:title="Novo"
-        app:showAsAction="always" />
+
+        android:title="Novo" />
 
     <item
         android:id="@+id/menu_mapa"
-        android:icon="@drawable/ic_mapa"
-        android:title="Mapa"
-        app:showAsAction="always" />
+        android:title="Mapa"/>
 
-    <item
+    <!--<item
         android:icon="@drawable/ic_opcoes"
         android:title="Mais opções"
         app:showAsAction="always">
@@ -36,5 +33,5 @@
                 android:title="Preferências"
                 app:showAsAction="always" />
         </menu>
-    </item>
+    </item>-->
 </menu>
